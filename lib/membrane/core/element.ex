@@ -123,14 +123,6 @@ defmodule Membrane.Core.Element do
   end
 
   @impl GenServer
-  def handle_info({:DOWN, ref, :process, _pid, reason}, %{parent_monitor: ref} = state) do
-    {:noreply, state} =
-      MessageDispatcher.handle_message(Message.new(:pipeline_down, reason), :info, state)
-
-    {:stop, reason, state}
-  end
-
-  @impl GenServer
   def handle_info(message, state) do
     message |> MessageDispatcher.handle_message(:info, state)
   end

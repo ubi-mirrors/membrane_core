@@ -72,19 +72,6 @@ defmodule Membrane.Core.Element.LifecycleController do
     {:ok, state}
   end
 
-  @spec handle_pipeline_down(reason :: any, State.t()) :: {:ok, State.t()}
-  def handle_pipeline_down(reason, state) do
-    if reason != :normal do
-      warn_error(
-        "Shutting down because of pipeline failure",
-        {:pipeline_failure, reason: reason},
-        state
-      )
-    end
-
-    handle_shutdown(reason, state)
-  end
-
   @doc """
   Handles custom messages incoming to element.
   """
