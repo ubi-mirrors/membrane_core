@@ -182,7 +182,7 @@ defmodule Membrane.Core.ElementTest do
     ]
     |> Enum.each(fn msg ->
       assert {:noreply, _state} = Element.handle_info(msg, playing_state())
-      assert_receive msg
+      assert_receive ^msg
     end)
   end
 

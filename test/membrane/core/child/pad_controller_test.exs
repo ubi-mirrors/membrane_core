@@ -26,7 +26,7 @@ defmodule Membrane.Core.Child.PadControllerTest do
     test "when pad is present in the element" do
       state = prepare_state(TrivialFilter)
 
-      assert {{:ok, pad_info}, new_state} =
+      assert {{:ok, _pad_info}, new_state} =
                @module.handle_link(
                  :output,
                  :output,
